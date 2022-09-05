@@ -32,6 +32,8 @@
   margin-right: 20%;
 }
 .enviar{
+  width: 340px;
+  height: 39px;
   min-width: 100%;
   border: 1px solid #707070;
   border-radius: 4px;

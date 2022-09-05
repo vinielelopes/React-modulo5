@@ -1,10 +1,11 @@
+import React from "react";
 import { useState } from "react";
 import "./App.css";
-import React from "react";
+import { useForm } from "react-hook-form";
+import { IMaskInput } from 'react-imask';
 
 function App() {
   const url = "https://frontend-intern-challenge-api.iurykrieger.vercel.app/products?page=1"
-
   const [dado, setDado] = useState({});
 
   const getApi = async () => {
@@ -19,6 +20,11 @@ function App() {
   }
 
   getApi()
+  
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
+
+  
 
   return (
     <div>
@@ -52,23 +58,33 @@ function App() {
           <h3>Ajude o algorítimo a ser mais certeiro</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies tellus nec mi porta convallis sollicitudin eu urna. Mauris rhoncus erat sed interdum dignissim. Suspendisse semper pretium consectetur. Praesent bibendum arcu risus, sit amet iaculis ex tempus quis. Cras et erat ut tellus vulputate tincidunt. Aenean lacinia euismod augue vel egestas. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum vel urna tortor. Vivamus et arcu non felis tristique eleifend. Morbi eu condimentum urna. Curabitur eu magna eget turpis condimentum ultrices. Suspendisse quis lorem ultricies, pulvinar purus sed, egestas erat. Etiam ultricies a ante vehicula pharetra. Quisque ut neque mattis, consequat velit ut, ultrices orci. Nulla varius elementum erat vel pharetra. Aenean sit amet nisi diam. Morbi viverra, magna ac luctus commodo, odio ante suscipit libero, at mattis augue est vel metus.</p>
         </div>
-        <form className='form'>
+
+        <form onSubmit={handleSubmit(onSubmit)} className='form'>
           <label> Seu nome:</label>
-          <input type='text'></input>
+          <input  {...register("nome", { required: true, minLength: 10 })} type='text'></input>
+          {errors.nome && <span>Esse campo é obrigatório.</span>}
           <label>Email:</label>
-          <input type='text'></input>
+          <input {...register("email", { required: true,  pattern: {
+      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+      message: 'Enter a valid e-mail address',
+    } })} type='email'/>
+          {errors.email && <span>Esse campo é obrigatório.</span>}
           <label>CPF:</label>
-          <input type='text'></input>
+          <IMaskInput mask="000.000.000-00" ><input {...register("nome", { required: true})} type='number'></input></IMaskInput>
+
           <div>
             <br></br>
-            <input type='radio' value='female' name='gender'></input>
+            <input {...register("gender", { required: true})} type='radio' value='female' name='gender'></input>
             <label>  Feminino</label>
-            <input type='radio' value='male' name='gender'></input>
+            <input {...register("gender", { required: true})} type='radio' value='male' name='gender'></input>
             <label>  Masculino</label>
-            <input type='radio' value='nogender' name='gender'></input>
+            <input {...register("gender", { required: true})} type='radio' value='nogender' name='gender'></input>
             <label>  Não-binário</label>
+            <br></br>
+            {errors.gender && <span>Esse campo é obrigatório.</span>}
+
             <br></br><br></br>
-            <button className='enviar'>Enviar</button>
+            <input type='submit' className='enviar'/>
              
 
           </div>
@@ -84,7 +100,7 @@ function App() {
       <div className="itens1">
         <div className="item1">
         <img></img>
-        <h4> Name</h4>
+        <h4> {dado.nome}</h4>
         <p> descricao blabla</p>
         <h5>R$11,00</h5>
         <h4>R$10,00</h4>
@@ -170,10 +186,12 @@ function App() {
       <br></br>
         <div className="compartilhar">
           <p>Quer que seus amigos também ganhem a lista personalizada deles? Preencha agora!</p>
+          <form>
           <label>Nome do seu amigo: </label>
           <input type='text'></input>
           <label>  E-mail: </label>
-          <input type='text'></input>
+          <input type='email'/>
+          </form>
         </div>
         <br></br>
         <button className='botao'>Enviar agora</button>
