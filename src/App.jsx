@@ -2,7 +2,9 @@ import React from "react";
 import { useState } from "react";
 import "./App.css";
 import { useForm } from "react-hook-form";
-import { IMaskInput } from 'react-imask';
+import { Header } from "./components/Header/Header"
+import { Footer } from "./components/Footer/Footer";
+
 
 function App() {
   const url = "https://frontend-intern-challenge-api.iurykrieger.vercel.app/products?page=1"
@@ -24,33 +26,13 @@ function App() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
-  
+
 
   return (
     <div>
-      <div className = 'header'>
-      <header>
-        <h3> uma seleção de produtos</h3>
-        <h1>
-          especial para você
-        </h1>
-        <p> 
-        Todos os produtos desta lista foram selecionados a partir da sua navegação. Aproveite!
-        </p>
-        <div className='botoes'>
-          <button className="botaoHeader"> Conheça a Linx </button>
-          <button className="botaoHeader"> Ajude o algoritmo</button>
-          <button className="botaoHeader">
-            Seus produtos
-          </button>
-          <button className="botaoHeader"> Compartilhe</button>
-
-        </div>
-        <br></br>
-        <br></br>
-
-      </header>
-
+      <div className = 'headerDiv'>
+        <Header/>
+    
       </div >
      
       <div className= 'middle'>
@@ -70,7 +52,14 @@ function App() {
     } })} type='email'/>
           {errors.email && <span>Esse campo é obrigatório.</span>}
           <label>CPF:</label>
-          <IMaskInput mask="000.000.000-00" ><input {...register("nome", { required: true})} type='number'></input></IMaskInput>
+          <input {...register("cpf", { required: true,  pattern: {
+              value: /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/,
+              message: 'CPF inválido ',
+            } })}/>
+          {errors.cpf && <span>Esse campo é obrigatório.<br></br>
+             (digite no formato xxx.xxx.xxx-xx)</span>}
+
+          
 
           <div>
             <br></br>
@@ -197,12 +186,8 @@ function App() {
         <button className='botao'>Enviar agora</button>
         <br></br>
         <br></br>
-      <div className='footerBig'>
-        <footer className='footer'>
-          <p>Testando suas habilidades em HTML, CSS e JS. </p>
-            <p>Linx Impulse 2019</p>
-
-        </footer>
+      <div className='footer'>
+        <Footer/>
       </div>
     </div>
   );

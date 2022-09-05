@@ -1,0 +1,11 @@
+.footerBig{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    background:linear-gradient(177deg,white 39%,#707070 21%);
+  
+  }
+  .footer{
+    margin-top: 15%;
+    color: white;
+  }
