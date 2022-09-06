@@ -32,23 +32,6 @@
   color: #888888;
   background-color: white;
 }
-.itens1{
-  margin-left: 10%;
-  margin-right: 10%;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-around;
-  color: #888888;
-}
-.itens2{
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 5%;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-around;
-  color: #888888;
-}
 
 .botao{
   border: 1px solid #707070;
@@ -86,32 +69,33 @@
   padding: 0 10px;
 }
 
-.comprar{
-  width: 200px;
-  height: 30px;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 1px solid #707070;
-  border-radius: 4px;
-  opacity: 1;
-  color: #888888; 
-  padding: 1px;
-}
 img{
   width: 200px;
   height: 150px;
   border: 1px solid #707070;
-}
-.item1{
-  text-align: justify;
-  width: 201px;
-  height: 350px;
-  padding: 2em;
-  height: 350px;
-  
 }
 .compartilhar{
   color: #888888;
 }
 input{
   border: 1px solid #888888;
+}
+.cardDiv{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  color: #888888;
+}
+.cardDiv2{
+  display: flex;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  padding: 2rem;
+  justify-content: space-around;
+  color: #888888;
+
 }

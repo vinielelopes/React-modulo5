@@ -1,16 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { useForm } from "react-hook-form";
 import { Header } from "./components/Header/Header"
 import { Footer } from "./components/Footer/Footer";
+import { Card } from "./components/Card/Card";
 
 
 function App() {
   const url = "https://frontend-intern-challenge-api.iurykrieger.vercel.app/products?page=1"
   const [dado, setDado] = useState({});
 
-  const getApi = async () => {
+async function getApi (){
     try {
       let res = await fetch (url)
       console.log(res)
@@ -21,7 +22,7 @@ function App() {
 
   }
 
-  getApi()
+  useEffect(() => getApi, []);
   
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
@@ -86,81 +87,19 @@ function App() {
         </span>
       </div>
           <br></br>
-      <div className="itens1">
-        <div className="item1">
-        <img></img>
-        <h4> {dado.nome}</h4>
-        <p> descricao blabla</p>
-        <h5>R$11,00</h5>
-        <h4>R$10,00</h4>
-        <h6>10x de R$1,00</h6>
-        <button className='comprar'>Comprar</button>
-        </div>
-        <div className="item1">
-        <img></img>
-        <h4> Name</h4>
-        <p> descricao blabla</p>
-        <h5>R$11,00</h5>
-        <h4>R$10,00</h4>
-        <h6>10x de R$1,00</h6>
-        <button className='comprar'>Comprar</button>
-        </div>
-        <div className="item1">
-        <img></img>
-        <h4> Name</h4>
-        <p> descricao blabla</p>
-        <h5>R$11,00</h5>
-        <h4>R$10,00</h4>
-        <h6>10x de R$1,00</h6>
-        <button className='comprar'>Comprar</button>
-        </div>
-        <div className="item1">
-        <img></img>
-        <h4> Name</h4>
-        <p> descricao blabla</p>
-        <h5>R$11,00</h5>
-        <h4>R$10,00</h4>
-        <h6>10x de R$1,00</h6>
-        <button className='comprar'>Comprar</button>
-        </div>
-        </div>
-      <div className="itens2">
-        <div className="item1">
-        <img></img>
-        <h4> Name</h4>
-        <p> descricao blabla</p>
-        <h5>R$11,00</h5>
-        <h4>R$10,00</h4>
-        <h6>10x de R$1,00</h6>
-        <button className='comprar'>Comprar</button>
-        </div>
-        <div className="item1">
-        <img></img>
-        <h4> Name</h4>
-        <p> descricao blabla</p>
-        <h5>R$11,00</h5>
-        <h4>R$10,00</h4>
-        <h6>10x de R$1,00</h6>
-        <button className='comprar'>Comprar</button>
-        </div>
-        <div className="item1">
-        <img></img>
-        <h4> Name</h4>
-        <p> descricao blabla</p>
-        <h5>R$11,00</h5>
-        <h4>R$10,00</h4>
-        <h6>10x de R$1,00</h6>
-        <button className='comprar'>Comprar</button>
-        </div>
-        <div className="item1">
-        <img></img>
-        <h4> Name</h4>
-        <p> descricao blabla</p>
-        <h5>R$11,00</h5>
-        <h4>R$10,00</h4>
-        <h6>10x de R$1,00</h6>
-        <button className='comprar'>Comprar</button>
-        </div>
+      <div className="cardDiv">
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        
+      </div>
+      <div className="cardDiv2">
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        
       </div>
      
         <br></br><br></br>
