@@ -28,6 +28,8 @@ async function getApi (){
   useEffect(() => getApi, []);
   
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register: register2, handleSubmit: handleSubmit2, formState: { errors: errors2 } } = useForm();
+
   const onSubmit = data => console.log(data);
 
 
@@ -121,22 +123,22 @@ async function getApi (){
         <div className="compartilhar">
           <p>Quer que seus amigos também ganhem a lista personalizada deles? Preencha agora!</p>
 
-          <form  className= 'form2' onSubmit={handleSubmit(onSubmit)}>
+          <form  className= 'form2' onSubmit={handleSubmit2(onSubmit)}>
             <div>
             <label>Nome do seu amigo: </label>
           <br></br>
             
-          <input className='inputText' {...register("nome2", { required: true, minLength: 10 })} type='text'></input>
-          {errors.nome2 && <span>Esse campo é obrigatório.</span>}
+          <input className='inputText' {...register2("nome2", { required: true, minLength: 10 })} type='text'></input>
+          {errors2.nome2 && <span>Esse campo é obrigatório.</span>}
             </div>
             <div>
             <label>  E-mail: </label>
           <br></br>
-          <input {...register("email2", { required: true,  pattern: {
+          <input {...register2("email2", { required: true,  pattern: {
       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
       message: 'Enter a valid e-mail address',
     } })} className='inputText' type='email'/>
-              {errors.email2 && <span>Esse campo é obrigatório.</span>}
+              {errors2.email2 && <span>Esse campo é obrigatório.</span>}
 
 
             </div>
