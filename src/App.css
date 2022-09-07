@@ -31,6 +31,8 @@
   opacity: 1;
   color: #888888;
   background-color: white;
+  font-size: medium;
+
 }
 
 .botao{
@@ -38,8 +40,10 @@
   border-radius: 4px;
   opacity: 1;
   width: 260px;
+  height: 39px;
   color: #888888;
   background-color: white;
+  font-size: medium;
 }
 
 .hr1{
@@ -81,21 +85,21 @@ input{
   border: 1px solid #888888;
 }
 .cardDiv{
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
   margin-bottom: 5%;
   padding: 2rem;
   display: flex;
-  justify-content: space-around;
   color: #888888;
+  flex-wrap: wrap;
 }
-.cardDiv2{
+.form2{
   display: flex;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 5%;
-  padding: 2rem;
-  justify-content: space-around;
-  color: #888888;
-
+  margin-left: 22%;
+  margin-right: 20%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.inputText{
+  width: 340px;
+  height: 30px;
 }
