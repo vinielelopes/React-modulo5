@@ -103,3 +103,7 @@ input{
   width: 340px;
   height: 30px;
 }
+.formChildren{
+  padding: 10px;
+  text-align: initial;
+}

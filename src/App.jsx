@@ -124,14 +124,14 @@ async function getApi (){
           <p>Quer que seus amigos também ganhem a lista personalizada deles? Preencha agora!</p>
 
           <form  className= 'form2' onSubmit={handleSubmit2(onSubmit)}>
-            <div>
+            <div className='formChildren'>
             <label>Nome do seu amigo: </label>
           <br></br>
             
           <input className='inputText' {...register2("nome2", { required: true, minLength: 10 })} type='text'></input>
           {errors2.nome2 && <span>Esse campo é obrigatório.</span>}
             </div>
-            <div>
+            <div className='formChildren'>
             <label>  E-mail: </label>
           <br></br>
           <input {...register2("email2", { required: true,  pattern: {
