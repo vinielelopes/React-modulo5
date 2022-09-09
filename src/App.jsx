@@ -25,7 +25,8 @@ async function getApi (){
 
   }
 
-  useEffect(() => getApi, []);
+  useEffect(() => {
+    getApi();}, []);
   
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { register: register2, handleSubmit: handleSubmit2, formState: { errors: errors2 } } = useForm();
